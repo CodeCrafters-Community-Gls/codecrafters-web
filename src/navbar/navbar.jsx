@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import logo from "../assets/symbol.svg"; // Assuming you have a logo SVG file
 import "./navbar.css";
 
 function Navbar() {
@@ -21,7 +22,7 @@ function Navbar() {
         <div className={`navbar-container ${scrolled ? "scrolled" : ""}`}>
             <div className={`navbar ${scrolled ? "scrolled" : ""}`}>
                 <div className="logo">
-                    <div className="logo-svg">😊</div>
+                    <div className="logo-svg"> <img src={logo} alt="logo" /> </div>
                     {!scrolled && <div className="name">logo</div>}
                 </div>
                 <div className="nav-links">

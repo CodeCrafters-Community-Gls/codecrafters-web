@@ -1,51 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
 .hero-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-
 }
-.heading{
+
+.heading {
     color: #121313;
     font-size: 108px;
     font-weight: 700;
-    font-family: 'inter';
+    line-height: 1.1;
+    font-family: 'Geist', sans-serif;
     margin-top: 20vh;
+    text-align: center;
 }
-.sub-heading{
+
+.sub-heading {
     text-align: center;
     color: #1E1E1E;
     font-size: 22px;
     margin-top: 17px;
     font-weight: 400;
-    font-family: 'inter';
+    font-family: 'Geist', sans-serif;
 }
-.domain{
+
+.domain {
     color: #1E1E1E;
-    font-size: 22px;
-    font-weight: 400;
-    font-family: 'inter';
+    font-size: 26px;
+    font-weight: 500;
+    font-family: 'Geist', sans-serif;
     margin-top: 110px;
 }
+
 .domain-logos {
-  display: flex;
-  gap: 80px;
-  margin-top: 40px;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    gap: 80px;
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
 }
 
 .domain-logo {
-  width: fit-content;
-  height: fit-content;
-  transition: transform 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: fit-content;
+    height: fit-content;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Geist', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #1E1E1E;
+    white-space: nowrap;
 }
 
-.domain-logo img {
-  height: 80%;
-  object-fit: contain;
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .heading {
+        font-size: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .heading {
+        font-size: 48px;
+        margin-top: 15vh;
+    }
+    
+    .sub-heading {
+        font-size: 18px;
+        padding: 0 20px;
+    }
+    
+    .domain-logos {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .domain-logo {
+        white-space: normal;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading {
+        font-size: 36px;
+    }
+    
+    .sub-heading {
+        font-size: 16px;
+    }
+    
+    .domain {
+        margin-top: 80px;
+    }
 }

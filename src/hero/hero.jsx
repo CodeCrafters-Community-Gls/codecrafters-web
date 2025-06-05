@@ -3,37 +3,39 @@ import "./hero.css";
 
 function Hero() {
   const domains = [
-    { name: "Google", logo: "https://logo.clearbit.com/google.com" },
-    { name: "Apple", logo: "https://logo.clearbit.com/apple.com" },
-    { name: "Microsoft", logo: "https://logo.clearbit.com/microsoft.com" },
-    { name: "Amazon", logo: "https://logo.clearbit.com/amazon.com" },
-    { name: "Facebook", logo: "https://logo.clearbit.com/facebook.com" },
-    { name: "Netflix", logo: "https://logo.clearbit.com/netflix.com" },
-    { name: "Adobe", logo: "https://logo.clearbit.com/adobe.com" },
-    { name: "Tesla", logo: "https://logo.clearbit.com/tesla.com" },
-    { name: "Spotify", logo: "https://logo.clearbit.com/spotify.com" },
-    { name: "Slack", logo: "https://logo.clearbit.com/slack.com" },
+    "Web & App Development",
+    "AI/ML",
+    "Blockchain/Web3", 
+    "Cybersecurity",
+    "Full Stack Development",
+    "Designing",
+    "Entrepreneurship",
+    "Unity Game Development"
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [scale, setScale] = useState(1);
+  const [fade, setFade] = useState(1);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setScale(0); // shrink all
-
+      setFade(0); // Fade out
+      setScale(0.8); // Slightly shrink
+      
       setTimeout(() => {
-        setCurrentIndex((prevIndex) =>
-          prevIndex + 5 >= domains.length ? 0 : prevIndex + 5
-        );
-        setScale(1); // grow all
-      }, 400); // wait until scale-down finishes
+        setCurrentIndex(prev => (prev + 4) % domains.length);
+        setFade(1); // Fade in
+        setScale(1); // Return to normal size
+      }, 300); // Match with CSS transition duration
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [domains.length]);
 
-  const visibleDomains = domains.slice(currentIndex, currentIndex + 5);
+  const visibleDomains = [];
+  for (let i = 0; i < 4; i++) {
+    visibleDomains.push(domains[(currentIndex + i) % domains.length]);
+  }
 
   return (
     <div className="hero-container">
@@ -47,15 +49,17 @@ function Hero() {
       <div className="domain">Our Domains</div>
       <div className="domain-logos">
         {visibleDomains.map((domain, idx) => (
-          <div
+          <div 
             key={idx}
             className="domain-logo"
             style={{
+              opacity: fade,
               transform: `scale(${scale})`,
-              transition: "transform 0.4s ease-in-out",
+              transition: 'all 0.3s ease'
             }}
-          >
-            <img src={domain.logo} alt={domain.name} />
+            >
+              <b><span>{domain}</span></b>
+            
           </div>
         ))}
       </div>
